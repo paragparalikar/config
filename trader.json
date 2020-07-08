@@ -1,0 +1,44 @@
+{
+	"portfolio_id": "YS9709",
+	"kite_credentials": {
+		"pin": "QKr4bAkqiR8AruQMByx8ng==",
+		"username": "r4AoEwnja9eOIk76aptRxg==",
+		"password": "pyB9xLlVSdFZcV896L7Pqg=="
+	},
+	"position_sizing_strategy": {
+		"id": "CompositePositionSizingStrategy",
+		"children": [{
+			"id": "LiquidityPercentagePositionSizingStrategy",
+			"span": 14,
+			"percentage": 1.00 }, {
+			"id": "PortfolioValuePercentagePositionSizingStrategy",
+			"percentage": 5.00 } ]
+	},
+	"trading_strategies": [{
+		"id": "MeanReversionTradingStrategy",
+		"min_margin": 1000.00,
+		"instrument_search_criteria": {
+			"segments": ["NSE"],
+			"exchanges": ["NSE"],
+			"instrument_types": ["EQ"]
+		},
+		"pattern_recognition_strategy": {
+			"id": "MeanReversionPatternRecognitionStrategy",
+			"span": 14,
+			"max_rsi": 30.00,
+			"min_deviation": 2.00,
+			"min_avg_turnover": 10000000.00,
+			"max_range_percentage": 4.00
+		},
+		"entry_strategy": {
+			"id": "BuyAboveSignalHighStrategy",
+			"quantity_percentage": 100.00,
+			"clearance_percentage": 0.50
+		},
+		"exit_strategy": {
+			"id": "SellBelowLastBarLowStrategy",
+			"quantity_percentage": 100.00,
+			"clearance_percentage": 0.50
+		}
+	}]
+}
